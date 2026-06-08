@@ -11,6 +11,12 @@ st.set_page_config(
     page_icon="📦",
     layout="wide"
 )
+st.markdown("""
+### 🚚 Supply Chain Intelligence Platform
+
+Analyze delivery performance, delay risks,
+regional bottlenecks and shipping efficiency.
+""")
 
 # ----------------------------
 # LOAD DATA
@@ -288,3 +294,92 @@ st.download_button(
     file_name="APL_Logistics_Filtered.csv",
     mime="text/csv"
 )
+st.markdown("---")
+st.subheader("🌍 Global Logistics Performance Map")
+
+country_analysis = (
+    filtered_df.groupby("Order Country")["Delivery Gap"]
+    .mean()
+    .reset_index()
+)
+
+fig6 = px.choropleth(
+    country_analysis,
+    locations="Order Country",
+    locationmode="country names",
+    color="Delivery Gap",
+    hover_name="Order Country",
+    color_continuous_scale="RdYlGn_r",
+    title="Average Delivery Delay by Country"
+)
+
+st.plotly_chart(fig6, use_container_width=True)
+st.markdown("---")
+st.subheader("📦 Top Delayed Product Categories")
+
+category_analysis = (
+    filtered_df.groupby("Category Name")["Delivery Gap"]
+    .mean()
+    .sort_values(ascending=False)
+    .head(10)
+    .reset_index()
+)
+
+fig7 = px.bar(
+    category_analysis,
+    x="Delivery Gap",
+    y="Category Name",
+    orientation="h",
+    color="Delivery Gap",
+    title="Top 10 Delayed Categories"
+)
+
+st.plotly_chart(fig7, use_container_width=True)
+st.markdown("---")
+st.subheader("💰 Sales vs Profit Analysis")
+
+fig8 = px.scatter(
+    filtered_df,
+    x="Sales",
+    y="Order Profit Per Order",
+    color="Customer Segment",
+    title="Sales vs Profit Relationship"
+)
+
+st.plotly_chart(fig8, use_container_width=True)
+st.markdown("---")
+st.subheader("📈 Market-wise Delay Risk")
+
+market_analysis = (
+    filtered_df.groupby("Market")["Late_delivery_risk"]
+    .mean()
+    .reset_index()
+)
+
+market_analysis["Late_delivery_risk"] *= 100
+
+fig9 = px.bar(
+    market_analysis,
+    x="Market",
+    y="Late_delivery_risk",
+    color="Late_delivery_risk",
+    text_auto=True,
+    title="Late Delivery Risk by Market (%)"
+)
+
+st.plotly_chart(fig9, use_container_width=True)
+st.markdown("---")
+st.subheader("🎯 Executive Summary")
+
+st.success(f"""
+Total Orders: {total_orders:,}
+
+On-Time Delivery Rate: {on_time_rate:.2f}%
+
+Average Delay: {avg_delay:.2f} Days
+
+Late Delivery Risk: {late_risk:.2f}%
+
+This dashboard helps identify logistics bottlenecks,
+shipping inefficiencies, and regional delay risks.
+""")
