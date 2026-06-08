@@ -383,3 +383,4 @@ Late Delivery Risk: {late_risk:.2f}%
 This dashboard helps identify logistics bottlenecks,
 shipping inefficiencies, and regional delay risks.
 """)
+st.write("NEW VERSION LOADED 🚀")
