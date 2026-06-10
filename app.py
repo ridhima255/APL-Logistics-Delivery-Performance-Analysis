@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 st.markdown("""
-### 🚚 Supply Chain Intelligence Platform
+###  Supply Chain Intelligence Platform
 
 Analyze delivery performance, delay risks,
 regional bottlenecks and shipping efficiency.
@@ -73,7 +73,7 @@ filtered_df = df[
 
 
 
-st.title("📦 APL Logistics Intelligence Dashboard")
+st.title(" APL Logistics Intelligence Dashboard")
 
 st.markdown(
     """
@@ -108,25 +108,25 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric(
-        "📦 Total Orders",
+        "Total Orders",
         f"{total_orders:,}"
     )
 
 with col2:
     st.metric(
-        "✅ On-Time Rate",
+        "On-Time Rate",
         f"{on_time_rate:.2f}%"
     )
 
 with col3:
     st.metric(
-        "⏳ Avg Delay",
+        " Avg Delay",
         f"{avg_delay:.2f} Days"
     )
 
 with col4:
     st.metric(
-        "⚠️ Late Risk",
+        "Late Risk",
         f"{late_risk:.2f}%"
     )
 
@@ -178,7 +178,7 @@ with col2:
 
 
 
-st.subheader("🚚 Shipping Mode Analysis")
+st.subheader(" Shipping Mode Analysis")
 
 shipping_analysis = (
     filtered_df
@@ -203,7 +203,7 @@ st.plotly_chart(
 
 
 
-st.subheader("🌍 Regional Delay Analysis")
+st.subheader("Regional Delay Analysis")
 
 region_analysis = (
     filtered_df
@@ -228,7 +228,7 @@ st.plotly_chart(
 
 
 
-st.subheader("👥 Customer Segment Analysis")
+st.subheader(" Customer Segment Analysis")
 
 segment_analysis = (
     filtered_df
@@ -253,7 +253,7 @@ st.plotly_chart(
 
 
 
-st.subheader("📄 Dataset Preview")
+st.subheader(" Dataset Preview")
 
 st.dataframe(filtered_df.head(50))
 
@@ -267,7 +267,7 @@ st.download_button(
     mime="text/csv"
 )
 st.markdown("---")
-st.subheader("🌍 Global Logistics Performance Map")
+st.subheader(" Global Logistics Performance Map")
 
 country_analysis = (
     filtered_df.groupby("Order Country")["Delivery Gap"]
@@ -287,7 +287,7 @@ fig6 = px.choropleth(
 
 st.plotly_chart(fig6, use_container_width=True)
 st.markdown("---")
-st.subheader("📦 Top Delayed Product Categories")
+st.subheader("Top Delayed Product Categories")
 
 category_analysis = (
     filtered_df.groupby("Category Name")["Delivery Gap"]
@@ -308,7 +308,7 @@ fig7 = px.bar(
 
 st.plotly_chart(fig7, use_container_width=True)
 st.markdown("---")
-st.subheader("💰 Sales vs Profit Analysis")
+st.subheader("Sales vs Profit Analysis")
 
 fig8 = px.scatter(
     filtered_df,
@@ -320,7 +320,7 @@ fig8 = px.scatter(
 
 st.plotly_chart(fig8, use_container_width=True)
 st.markdown("---")
-st.subheader("📈 Market-wise Delay Risk")
+st.subheader(" Market-wise Delay Risk")
 
 market_analysis = (
     filtered_df.groupby("Market")["Late_delivery_risk"]
@@ -341,7 +341,7 @@ fig9 = px.bar(
 
 st.plotly_chart(fig9, use_container_width=True)
 st.markdown("---")
-st.subheader("🎯 Executive Summary")
+st.subheader("Executive Summary")
 
 st.success(f"""
 Total Orders: {total_orders:,}
