@@ -122,17 +122,17 @@ with col1:
         use_container_width=True
     )
     with col2:
-        fig2 = px.histogram(
-        filtered_df,
-        x="Delivery Gap",
-        nbins=30,
-        title="Delivery Gap Distribution"
+         fig2 = px.histogram(
+         filtered_df,
+         x="Delivery Gap",
+         nbins=30,
+         title="Delivery Gap Distribution"
     )
      st.plotly_chart(
-        fig2,
+         fig2,
         use_container_width=True
     )
-st.subheader(" Shipping Mode Analysis")
+st.subheader(" Shipping Mode Analysis")0
 shipping_analysis = (
     filtered_df
     .groupby("Shipping Mode")["Delivery Gap"]
