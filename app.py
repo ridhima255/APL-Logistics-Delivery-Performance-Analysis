@@ -122,7 +122,7 @@ with col1:
         use_container_width=True
     )
     with col2:
-fig2 = px.histogram(
+        fig2 = px.histogram(
         filtered_df,
         x="Delivery Gap",
         nbins=30,
