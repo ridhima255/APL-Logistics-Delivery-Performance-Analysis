@@ -355,3 +355,7 @@ Late Delivery Risk: {late_risk:.2f}%
 This dashboard helps identify logistics bottlenecks,
 shipping inefficiencies, and regional delay risks.
 """)
+st.markdown("---")
+st.caption(
+    "Developed by Ridhima Katariya | APL Logistics Delivery Performance & Delay Risk Analysis"
+)
