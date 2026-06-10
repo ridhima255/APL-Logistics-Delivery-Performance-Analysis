@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# ----------------------------
-# PAGE CONFIG
-# ----------------------------
 
 st.set_page_config(
     page_title="APL Logistics Dashboard",
@@ -18,9 +15,6 @@ Analyze delivery performance, delay risks,
 regional bottlenecks and shipping efficiency.
 """)
 
-# ----------------------------
-# LOAD DATA
-# ----------------------------
 
 @st.cache_data
 def load_data():
@@ -31,9 +25,6 @@ def load_data():
 
 df = load_data()
 
-# ----------------------------
-# DATA CLEANING
-# ----------------------------
 
 df["Delivery Gap"] = (
     df["Days for shipping (real)"]
@@ -52,9 +43,7 @@ df["Delivery Category"] = df["Delivery Gap"].apply(
     classify_delivery
 )
 
-# ----------------------------
-# SIDEBAR FILTERS
-# ----------------------------
+
 
 st.sidebar.header("Dashboard Filters")
 
@@ -82,9 +71,7 @@ filtered_df = df[
     & (df["Customer Segment"].isin(customer_segment))
 ]
 
-# ----------------------------
-# TITLE
-# ----------------------------
+
 
 st.title("📦 APL Logistics Intelligence Dashboard")
 
@@ -95,9 +82,7 @@ st.markdown(
     """
 )
 
-# ----------------------------
-# KPI SECTION
-# ----------------------------
+
 
 total_orders = len(filtered_df)
 
@@ -147,9 +132,7 @@ with col4:
 
 st.divider()
 
-# ----------------------------
-# DELIVERY STATUS CHART
-# ----------------------------
+
 
 col1, col2 = st.columns(2)
 
@@ -193,9 +176,7 @@ with col2:
         use_container_width=True
     )
 
-# ----------------------------
-# SHIPPING MODE ANALYSIS
-# ----------------------------
+
 
 st.subheader("🚚 Shipping Mode Analysis")
 
@@ -220,9 +201,7 @@ st.plotly_chart(
     use_container_width=True
 )
 
-# ----------------------------
-# REGION ANALYSIS
-# ----------------------------
+
 
 st.subheader("🌍 Regional Delay Analysis")
 
@@ -247,9 +226,7 @@ st.plotly_chart(
     use_container_width=True
 )
 
-# ----------------------------
-# CUSTOMER SEGMENT ANALYSIS
-# ----------------------------
+
 
 st.subheader("👥 Customer Segment Analysis")
 
@@ -274,17 +251,12 @@ st.plotly_chart(
     use_container_width=True
 )
 
-# ----------------------------
-# DATA PREVIEW
-# ----------------------------
+
 
 st.subheader("📄 Dataset Preview")
 
 st.dataframe(filtered_df.head(50))
 
-# ----------------------------
-# DOWNLOAD OPTION
-# ----------------------------
 
 csv = filtered_df.to_csv(index=False)
 
