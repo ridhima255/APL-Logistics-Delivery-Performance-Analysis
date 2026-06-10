@@ -121,15 +121,16 @@ with col1:
         fig1,
         use_container_width=True
     )
-    with col2:
-         fig2 = px.histogram(
-         filtered_df,
-         x="Delivery Gap",
-         nbins=30,
-         title="Delivery Gap Distribution"
+   with col2:
+    fig2 = px.histogram(
+        filtered_df,
+        x="Delivery Gap",
+        nbins=30,
+        title="Delivery Gap Distribution"
     )
-     st.plotly_chart(
-         fig2,
+
+    st.plotly_chart(
+        fig2,
         use_container_width=True
     )
 st.subheader(" Shipping Mode Analysis")0
