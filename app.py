@@ -134,7 +134,7 @@ with col2:
         fig2,
         use_container_width=True
     )
-st.subheader(" Shipping Mode Analysis")0
+st.subheader(" Shipping Mode Analysis")
 shipping_analysis = (
     filtered_df
     .groupby("Shipping Mode")["Delivery Gap"]
