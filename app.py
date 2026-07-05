@@ -100,16 +100,16 @@ with col4:
     )
 st.divider()
 col1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
+
 with col1:
     delivery_counts = (
         filtered_df["Delivery Category"]
         .value_counts()
         .reset_index()
     )
-    delivery_counts.columns = [
-        "Status",
-        "Count"
-    ]
+    delivery_counts.columns = ["Status", "Count"]
+
     fig1 = px.pie(
         delivery_counts,
         names="Status",
@@ -117,11 +117,13 @@ with col1:
         title="Delivery Status Distribution",
         hole=0.4
     )
+
     st.plotly_chart(
         fig1,
         use_container_width=True
     )
-   with col2:
+
+with col2:
     fig2 = px.histogram(
         filtered_df,
         x="Delivery Gap",
@@ -129,9 +131,10 @@ with col1:
         title="Delivery Gap Distribution"
     )
 
-  st.plotly_chart(
-    fig2,
-    use_container_width=True
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
 )
 st.subheader(" Shipping Mode Analysis")0
 shipping_analysis = (
