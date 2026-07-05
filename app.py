@@ -130,12 +130,10 @@ with col2:
         nbins=30,
         title="Delivery Gap Distribution"
     )
-
     st.plotly_chart(
         fig2,
         use_container_width=True
     )
-)
 st.subheader(" Shipping Mode Analysis")0
 shipping_analysis = (
     filtered_df
